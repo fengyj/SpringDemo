@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+
+<configuration scan="false" debug="false">
+
+    <conversionRule conversionWord="clr"
+        converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+    <conversionRule conversionWord="wex"
+        converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+    <conversionRule conversionWord="wEx"
+        converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+
+    <variable name="APP_NAME" value="spring-demo" />
+    <variable name="LOG_DATEFORMAT_PATTERN" value="${LOG_DATEFORMAT_PATTERN:-%d{ISO8601,UTC}}" />
+    <variable name="LOG_PATH" value="${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp/}}}" />
+    <variable name="LOG_FILE" value="${LOG_PATH}${APP_NAME}.log" />
+    <variable name="CONSOLE_LOG_PATTERN"
+        value="${CONSOLE_LOG_PATTERN:-%clr(${LOG_DATEFORMAT_PATTERN}){faint} log_level=%clr(%-5level) %clr([%10.10thread]){faint} %clr([%logger{16}]){cyan} %kvp{DOUBLE} message=&quot;%replace(%m){'&quot;', '\''}&quot;%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
+    <variable name="FILE_LOG_PATTERN"
+        value="${FILE_LOG_PATTERN:-${LOG_DATEFORMAT_PATTERN} log_level=%level [%10.10thread] [%logger{16}] %kvp{DOUBLE} message=&quot;%m&quot;%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                ${CONSOLE_LOG_PATTERN}
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                ${FILE_LOG_PATTERN}
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}archived/${APP_NAME}_%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="me.fengyj" level="DEBUG" additivity="false">
+        <appender-ref ref="Console" />
+    </logger>
+
+    <!-- LOG everything at INFO level -->
+    <root level="INFO">
+        <appender-ref ref="Console" />
+    </root>
+
+    <springProfile name="test">
+        <logger name="me.fengyj" level="DEBUG" additivity="false">
+            <appender-ref ref="Console" />
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="Console" />
+        </root>
+    </springProfile>
+
+    <springProfile name="dev">
+        <logger name="me.fengyj" level="DEBUG" additivity="false">
+            <appender-ref ref="RollingFile" />
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="RollingFile" />
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <logger name="me.fengyj" level="INFO" additivity="false">
+            <appender-ref ref="RollingFile" />
+        </logger>
+
+        <root level="WARN">
+            <appender-ref ref="RollingFile" />
+        </root>
+    </springProfile>
+
+</configuration>
