@@ -5,7 +5,7 @@ import me.fengyj.springdemo.models.DataEntity;
 
 import java.util.TreeMap;
 
-public interface AbstractDao<K, T extends DataEntity<K>> {
+public interface SeriesDataDao<K, T extends DataEntity<K>> {
     
     TreeMap<K, T> getList(String partitionKey);
     void save(String partitionKey, TreeMap<K, T> historicalList);
