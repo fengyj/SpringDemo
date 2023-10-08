@@ -9,17 +9,22 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-demo-models</artifactId>
+    <artifactId>spring-demo-web</artifactId>
 
     <properties>
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>me.fengyj</groupId>
-            <artifactId>spring-demo-utils</artifactId>
+            <artifactId>spring-demo-dao</artifactId>
             <version>${parent.version}</version>
         </dependency>
-    </dependencies>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
 </project>

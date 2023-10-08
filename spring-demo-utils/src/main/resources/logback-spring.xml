@@ -13,7 +13,7 @@
     <conversionRule conversionWord="wEx"
         converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
 
-    <variable name="APP_NAME" value="spring-demo" />
+    <variable name="APP_NAME" value="${application.title}" />
     <variable name="LOG_DATEFORMAT_PATTERN" value="${LOG_DATEFORMAT_PATTERN:-%d{ISO8601,UTC}}" />
     <variable name="LOG_PATH" value="${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp/}/${APP_NAME}/}}" />
     <variable name="LOG_FILE" value="${LOG_PATH}application.log" />
@@ -22,6 +22,9 @@
     <variable name="FILE_LOG_PATTERN"
         value="${FILE_LOG_PATTERN:-${LOG_DATEFORMAT_PATTERN} log_level=%level [%10.10thread] [%logger{16}] %kvp{DOUBLE} message=&quot;%m&quot;%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
 
+    <!-- Stop output INFO at start -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+    
     <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
