@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Shares</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container-sm">
+
+    <h1 class="text-center">Share List</h1>
+    <div class="float-md-end btn-group">
+        <input type="search" placeholder="Symbol or Name" data-th-value="${param.q}">
+        <!-- todo: the search function hasn't been implemented yet -->
+        <a href="/shares/list" data-th-href="@{/shares/list(q=${param.q})}"
+           class="icon-link btn btn-outline-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                 viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+            Search
+        </a>
+        <a href="/shares/edit" data-th-href="@{/shares/edit(q=${param.q})}"
+           class="btn btn-outline-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus"
+                 viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+            New
+        </a>
+    </div>
+    <div>
+        <table class="table table-striped table-hover table-responsive-md">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th>CreatedTime</th>
+                <th>LastUpdatedTime</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tr data-th-each="share:${shareList}">
+                <td><a data-th-href="@{/shares/view(id=${share.shareClassId},q=${param.q})}"
+                       data-th-text="${share.name}"></a></td>
+                <td data-th-text="${share.symbol}"></td>
+                <td data-th-text="${share.createdTime}"></td>
+                <td data-th-text="${share.lastUpdatedTime}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

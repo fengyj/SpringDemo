@@ -20,7 +20,6 @@ public class DatabaseConfiguration {
         dataSource.setUrl(properties.getUrl());
         dataSource.setUsername(properties.getUser());
         dataSource.setPassword(properties.getPassword());
-
         return dataSource;
     }
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title data-th-text="${'Edit Share: ' + {share?.name ?: share?.shareClassId == null ? '(New)' : ''}}">Edit
+        Share</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container-sm">
+
+    <h1 class="text-center">Edit Share: <span
+            data-th-text="${share?.name ?: share?.shareClassId == null ? '(New)' : ''}"></span></h1>
+    <form class="row g-3" action="#" data-th-action="@{/shares/edit(id=${share?.shareClassId},q=${param.q})}"
+          data-th-object="${share}"
+          method="post">
+        <fieldset>
+            <div class="mb-3">
+                <input type="hidden" data-th-field="*{createdTime}"/>
+                <input type="hidden" data-th-field="*{lastUpdatedTime}"/>
+            </div>
+            <div class="mb-3">
+                <label for="inputShareClassId" class="form-label">Share Class Id</label>
+                <input type="text" readonly class="form-control-plaintext" id="inputShareClassId"
+                       data-th-field="*{shareClassId}">
+            </div>
+            <div class="mb-3">
+                <label for="inputName" class="form-label">Name</label>
+                <input type="text" id="inputName" class="form-control" required data-th-field="*{name}"
+                       data-th-errorclass="is-invalid"/>
+                <div class="invalid-feedback" data-th-if="${#fields.hasErrors('name')}" data-th-errorclass="error"
+                     data-th-errors="*{name}"></div>
+            </div>
+            <div class="mb-3">
+                <label for="inputSymbol" class="form-label">Symbol</label>
+                <input type="text" id="inputSymbol" placeholder="exchange:symbol, like AAPL or 600036.SS" required
+                       class="form-control"
+                       data-th-errorclass="is-invalid"
+                       data-th-field="*{symbol}"/>
+                <div class="invalid-feedback" data-th-if="${#fields.hasErrors('symbol')}" data-th-errorclass="error"
+                     data-th-errors="*{symbol}"></div>
+                <div class="form-text">The value needs to be unique. The symbol should be matched to the value in Yahoo
+                    Finance.
+                </div>
+            </div>
+            <div class="mb-3 btn-group">
+                <input type="submit" value="Update" class="btn btn-outline-primary">
+                <a href="view.html" data-th-href="@{/shares/view(id=*{shareClassId},q=${param.q})}"
+                   class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </fieldset>
+        <div data-th-if="${#fields.hasGlobalErrors()}">
+            <ul>
+                <li class="invalid-feedback" data-th-each="err : ${#fields.globalErrors()}" data-th-text="${err}"
+                    data-th-errorclass="error"></li>
+            </ul>
+        </div>
+    </form>
+</div>
+</body>
+</html>

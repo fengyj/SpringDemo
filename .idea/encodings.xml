@@ -3,8 +3,11 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/spring-demo-dao/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-demo-dao/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-demo-facade-share/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-demo-models/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-demo-models/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-demo-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-demo-svc-share/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-demo-utils/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-demo-utils/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-demo-web/src/main/java" charset="UTF-8" />

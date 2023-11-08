@@ -2,9 +2,10 @@ package me.fengyj.springdemo.models;
 
 import java.time.LocalDateTime;
 
-public interface DataEntity<K> {
-    
+public interface DataEntity<K extends Comparable<K>> {
+
     K getKey();
+
     void setKey(K key);
 
     LocalDateTime getCreatedTime();

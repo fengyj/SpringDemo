@@ -19,7 +19,8 @@ public class ShareClassOperationDbDaoIT {
 
         var expected = new ShareClassOperation();
         expected.setShareClassId("0P0000TEST");
-        expected.setName("IBM");
+        expected.setName("International Business Machine");
+        expected.setSymbol("IBM");
         expected.setCreatedTime(LocalDateTime.now());
         expected.setLastUpdatedTime(LocalDateTime.now());
 
@@ -49,7 +50,7 @@ public class ShareClassOperationDbDaoIT {
 
         ThreadUtils.sleep(1000);
 
-        expected.setName("NAS:IBM");
+        expected.setSymbol("NAS:IBM");
         dao.save(expected);
 
         actual = dao.getByKey(expected.getKey());

@@ -14,4 +14,11 @@
     <properties>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>me.fengyj</groupId>
+            <artifactId>common-lib</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

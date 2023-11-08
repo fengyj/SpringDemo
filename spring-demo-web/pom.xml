@@ -18,13 +18,18 @@
 
         <dependency>
             <groupId>me.fengyj</groupId>
-            <artifactId>spring-demo-dao</artifactId>
-            <version>${parent.version}</version>
+            <artifactId>spring-demo-facade-share</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

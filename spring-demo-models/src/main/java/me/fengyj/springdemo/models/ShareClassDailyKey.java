@@ -33,9 +33,8 @@ public class ShareClassDailyKey implements Comparable<ShareClassDailyKey> {
     @Override
     public boolean equals(Object obj) {
 
-        if (!(obj instanceof ShareClassDailyKey))
+        if (!(obj instanceof ShareClassDailyKey anotherObj))
             return false;
-        ShareClassDailyKey anotherObj = (ShareClassDailyKey) obj;
         return compareTo(anotherObj) == 0;
     }
 
@@ -50,4 +49,11 @@ public class ShareClassDailyKey implements Comparable<ShareClassDailyKey> {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                shareClassId + ", " +
+                asOfDate +
+                "}";
+    }
 }

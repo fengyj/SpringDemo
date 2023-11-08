@@ -7,6 +7,7 @@ public class ShareClassOperation implements DataEntity<String> {
 
     private String shareClassId;
     private String name;
+    private String symbol;
     private LocalDateTime createdTime;
     private LocalDateTime lastUpdatedTime;
 
@@ -36,6 +37,14 @@ public class ShareClassOperation implements DataEntity<String> {
         this.name = name;
     }
 
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
     public LocalDateTime getCreatedTime() {
         return createdTime;
     }
@@ -57,7 +66,9 @@ public class ShareClassOperation implements DataEntity<String> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShareClassOperation that = (ShareClassOperation) o;
-        return Objects.equals(shareClassId, that.shareClassId) && Objects.equals(name, that.name);
+        return Objects.equals(shareClassId, that.shareClassId)
+                && Objects.equals(name, that.name)
+                && Objects.equals(symbol, that.symbol);
     }
 
     @Override

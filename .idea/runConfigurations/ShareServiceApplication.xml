@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ShareServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="me.fengyj.springdemo.service.share.ShareServiceApplication" />
+    <module name="spring-demo-svc-share" />
+    <option name="VM_PARAMETERS" value="-Dserver.port=8081 -Duser.timezone=UTC" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="me.fengyj.springdemo.service.share.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
